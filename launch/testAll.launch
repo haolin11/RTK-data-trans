@@ -1,11 +1,17 @@
 <launch>
 
     <node name="Mavros_data_sim" pkg="rtk_data_trans" type="Mavros_data_sim" output="screen">
+        <remap from="/mavros/gpsstatus/gpsl/raw" to="sim/mavros/gpsstatus/gpsl/raw"/>
+        <remap from="/mavros/global_position/global" to="sim/mavros/global_position/global"/>
+        <remap from="/mavros/global_position/rel_alt" to="sim/mavros/global_position/rel_alt"/>
     </node>
 
     <node name="RTK_data_sender" pkg="rtk_data_trans" type="RTK_data_sender" output="screen">
         <param name="remote_ip" value="127.0.0.1"/>
         <param name="remote_port" value="14500"/>
+        <remap from="/mavros/gpsstatus/gpsl/raw" to="sim/mavros/gpsstatus/gpsl/raw"/>
+        <remap from="/mavros/global_position/global" to="sim/mavros/global_position/global"/>
+        <remap from="/mavros/global_position/rel_alt" to="sim/mavros/global_position/rel_alt"/>
     </node>
 
     <node name="RTK_data_receiver" pkg="rtk_data_trans" type="RTK_data_receiver" output="screen">
