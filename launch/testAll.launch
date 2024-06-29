@@ -1,0 +1,15 @@
+<launch>
+
+    <node name="Mavros_data_sim" pkg="rtk_data_trans" type="Mavros_data_sim" output="screen">
+    </node>
+
+    <node name="RTK_data_sender" pkg="rtk_data_trans" type="RTK_data_sender" output="screen">
+        <param name="remote_ip" value="127.0.0.1"/>
+        <param name="remote_port" value="14500"/>
+    </node>
+
+    <node name="RTK_data_receiver" pkg="rtk_data_trans" type="RTK_data_receiver" output="screen">
+        <param name="remote_port" value="14500"/>
+    </node>
+
+</launch>
